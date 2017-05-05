@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Plantilla con control de audio</title>
+
+        <link rel="stylesheet" href="../../../components/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="assets/css/plantilla_02.css">
+        <script src='../../../components/jquery/dist/jquery.min.js'></script>
+
+    </head>
+    <body>
+        <div class="audio">
+            <audio id="entrevista">
+              <source src="assets/audios/hermes_redo.wav" type="audio/wav">
+            </audio>
+        </div>
+        <div class="reveal">
+            <div class="slides">
+                <section class="slide-aligned-left" data-background-image="assets/images/Hermes4.jpg">
+                    <h1>Un padre para <br>Hermés</h1>
+                    <p>El primer adoptado <br>por una iglesia luterana <br>en la ciudad de Nueva York.</p>
+                    <a href="#" class="navigate-next" id="comenzar">Comenzar</a>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes12.jpg">
+                	<span class="fondoBlanco"><p>“Te van a correr de la casa. Te van a pegar. Te van a hacer bullying. Una vida imposible de salir adelante”.</p></span>
+                </section>
+
+                <section class="slide-aligned-center">
+                    <p>Hermes Espinosa es uno de los 26 hijos adoptivos del Padre Fabián Arias, el líder de una congregación luterana que es parte del Nuevo Movimiento de Iglesias Santuario. Espinosa cuenta su vida como inmigrante adoptado por la iglesia de Sión.</p>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes2.jpg"></section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes13.jpg"></section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes10.jpg"></section>
+
+                <section class="slide-aligned-center">
+                    <p>“Pensé que era fácil de cruzar y viajar con un carro y ya pues estoy en Estados Unidos. No fue así…”</p>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes24.jpg"></section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes18.jpg"></section>
+
+                <section class="slide-aligned-center">
+                	<p>“¿Qué estoy haciendo? ¿Dónde voy a llegar? ¿Qué tal si no llego por allá? Me quedo aquí, porque la mayoría de la gente quedan allí. No te hacen caso…”</p>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes6.jpg"></section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes8.jpg"></section>
+
+                <section class="slide-aligned-center">
+                	<p>“Aprender idioma, cultura, diversidad, porque me impactó como que wow, esto es completamente diferente”.</p>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes19.jpg"></section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes16.jpg"></section>
+
+				<section class="slide-aligned-center">
+                    <p>“Extrañaba mucho a mi familia. Mi mamá, mi papá, mis hermanos... Llegó el momento que no quería vivir”.</p>
+                </section>
+
+                <section class="slide-aligned-center" data-background-image="assets/images/Hermes17.jpg"></section>
+
+                <section class="slide-aligned-center">
+                    <p>Con la ayuda de los fieles de Sión y el padre Fabián, Hermés supera la depresión y se enfoca en lograr sus metas. Quiere regresar a la escuela y estudiar diseños de moda en el Instituto FIT.</p>
+                </section>
+
+                <section class="slide-aligned-center">
+                    <h2>Un padre para Hermés</h2>
+                    <p>Producido por: <br>Estefanía Hernández, Jesenia De Moya C. y Lidia Hernández Tapia</p>
+					<p>Entrevistados: Hermés Espinosa y Fabián Arias</p>
+					<p>Editores: Luis Trelles, Miguel Paz, Cristina Maldonado (Investigación) y David Galavotti (Interactivo)</p>
+					<p>Financiado por la asignatura Craft 2 del programa de periodismo bilingüe de la escuela de periodismo de CUNY</p> 
+					<p>Hecho en la ciudad de Nueva York</p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="../../../components/reveal.js/lib/js/head.min.js"></script>
+        <script src="../../../components/reveal.js/js/reveal.js"></script>
+        <script>
+
+
+            $(document).ready(function() {
+
+                // Array para guardar el tiempo en el momento que cambiamos cada slide.
+                // Cada valor en el array esta expresado en segundos acumulados.
+                var tiempoTransicion = [17, 35, 45, 60, 85, 110, 130, 145, 175, 195, 210, 230, 255, 285, 315, 335, 360];
+                // Posición del array tiempoTransicion
+                var marcaActual = 0;
+                // Selecciono el objeto de audio.
+                var entrevista = $('#entrevista');
+                // Extraigo la duración.
+                var duracion = entrevista.prop('duration');
+                // Extraigo la posición actual del audio.
+                var posicion = entrevista.prop('currentTime');
+
+                // Inicio haciendo click en el botón comenzar, para darle "Play" al audio. El slide se ejecuta vía Reveal.js, class="navigate-next"
+                $('#comenzar').on('click', function() {
+                    entrevista.trigger('play');
+                });
+
+                // Listener o evento que detecta si hubo un cambio en slide.
+                Reveal.addEventListener( 'slidechanged', function(event, setTime) {
+
+                    // Si accidentalmente me cambio de slide sin usar el botón comenzar, entonces ejecuto el audio.
+
+                    // Caso contrario, pongo el audio en pausa y lo vuelvo a cero.
+
+                    if (Reveal.getState().indexh === 0) {
+                        entrevista.trigger('pause');
+                        entrevista.prop('currentTime',0);
+                    } else {
+                        entrevista.trigger('play');
+                    }
+
+                });
+
+
+
+                // Función para ejecutar siguiende slide.
+                function cambiarSlide() {
+                    Reveal.next();
+                    marcaActual += 1;
+                }
+
+                // Listener o evento que extrae el tiempo actual del audio.
+                // Sin función actualmente.
+                entrevista.on('timeupdate', function() {
+                    posicion = entrevista.prop('currentTime');
+                    if (posicion > 0 && posicion >= tiempoTransicion[marcaActual]) {
+                        cambiarSlide();
+                    }
+                });
+
+
+
+            });
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: false,
+                controls: false,
+                center: true,
+                progress: false,
+                width: "100%",
+                height: "100%"
+            });
+        </script>
+    </body>
+</html>
