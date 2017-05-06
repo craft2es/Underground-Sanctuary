@@ -8,6 +8,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Nixie+One');
 
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
+
 .reveal .slide-aligned-left {
   text-align: left;
 }
@@ -32,7 +34,8 @@ audio {
 }
 
 .reveal h1 {
-  font-family: 'Nixie One', serif; !important;
+  font-family: 'Playfair', serif;
+  font-weight: 400;
   letter-spacing: -1.2em;
   text-align: left;
   line-height: 1.055em !important; }
