@@ -8,6 +8,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Nixie+One');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
 
 .reveal .slide-aligned-left {
   text-align: left;
@@ -33,13 +34,17 @@ audio {
 }
 
 .reveal h1 {
-  font-family: 'Montserrat', sans-serif; !important;
+<<<<<<< HEAD
+  font-family: 'Playfair', serif; !important;
+=======
+  font-weight: 400;
+>>>>>>> origin/master
   letter-spacing: -1.2em;
   text-align: left;
   line-height: 1.055em !important; }
 
   .reveal h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair', serif;
   }
 
   .reveal h6 {
